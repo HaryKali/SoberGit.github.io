@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="这里是深度学习基础视频的学习笔记二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习笔记二">
+<meta property="og:url" content="http://example.com/2020/10/24/13_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/index.html">
+<meta property="og:site_name" content="Sober的博客">
+<meta property="og:description" content="这里是深度学习基础视频的学习笔记二">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/qoxsI3ZBjwCpa8y.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/uEHrApZI9s4Pgk5.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/LyN2qmikC6IAvR8.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/u1OcVFrDd6839AR.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/e6ghM7SlHUmRYt3.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/BU9Gat3DiAV1TbY.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/wd95WqlpChBNc83.png">
+<meta property="og:image" content="https://i.loli.net/2020/10/24/YZ5uBDEICrmNF6q.png">
+<meta property="article:published_time" content="2020-10-24T15:42:12.000Z">
+<meta property="article:modified_time" content="2021-10-03T10:56:29.149Z">
+<meta property="article:author" content="Sober">
+<meta property="article:tag" content="深度学习">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/10/24/qoxsI3ZBjwCpa8y.png">
+
+<link rel="canonical" href="http://example.com/2020/10/24/13_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>深度学习笔记二 | Sober的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Sober的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">欢迎大家驻足呀~</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/24/13_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%BA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Sober">
+      <meta itemprop="description" content="无关迟暮，不问翻覆。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Sober的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          深度学习笔记二
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-10-24 23:42:12" itemprop="dateCreated datePublished" datetime="2020-10-24T23:42:12+08:00">2020-10-24</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-10-03 18:56:29" itemprop="dateModified" datetime="2021-10-03T18:56:29+08:00">2021-10-03</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">深度学习笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>这里是深度学习基础视频的学习笔记二</p>
+<span id="more"></span>
+<p><strong>深度学习的数学基础</strong></p>
+<ul>
+<li>受限玻尔兹曼机：<ul>
+<li>谷歌不支持，很多人不知道不使用，使用受限</li>
+<li>过于复杂（建模和计算）</li>
+<li>有很强的理论支撑 </li>
+</ul>
+</li>
+<li>自编码器变种：<ul>
+<li>正则编码器</li>
+<li>稀疏编码器（人的大脑中对信号的激活也是稀疏的，高维而稀疏的表达是最好的）</li>
+<li>去噪自编码器（能够对“被污染/破坏”的原始数据解码、编码，还能恢复真正的原始数据，这样的特征才是好的）</li>
+<li>变分自编码器</li>
+</ul>
+</li>
+<li>深层网络的局部极小值主要是由多个隐层复合导致的。</li>
+</ul>
+<p><strong>卷积神经网络(CNN)</strong></p>
+<ul>
+<li>卷积神经网络的应用：分类、检索、检测、分割、人脸识别、人脸表情识别、图像生成、图像风格转化、自动驾驶……</li>
+<li>传统神经网络VS卷积神经网络<ul>
+<li>深度学习三部曲：<ul>
+<li>搭建神经网络结构</li>
+<li>找到一个合适的损失函数</li>
+<li>找到一个合适的优化函数，更新参数（反向传播，随机梯度下降，……）</li>
+</ul>
+</li>
+<li>全连接网络处理图像的问题：<ul>
+<li>参数太多：权重矩阵的参数太多–&gt;过拟合（若以二哈作为训练集来识别狗，测试金毛的结果却不一定是狗）</li>
+</ul>
+</li>
+<li>卷积神经网络的解决方式：<ul>
+<li>局部关联，参数共享</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>基本组成结构：<ul>
+<li>卷积：是对两个实变函数的一种数学操作。<ul>
+<li>卷积的可视化理解：不同的卷积核在关注不同的东西。</li>
+</ul>
+</li>
+<li>池化：（缩放）<ul>
+<li>保留了主要特征的同时减少参数和计算量，防止过拟合，提高模型泛化能力</li>
+<li>它一般处于卷积层与卷积层之间，全连接层与全连接层之间</li>
+<li>最大值池化，平均值池化</li>
+</ul>
+</li>
+<li>全连接/FC layer：<ul>
+<li>两层之间所有神经元都有权重链接</li>
+<li>通常全连接层在卷积神经网络尾部</li>
+<li>全连接层参数量通常最大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>【小结】<img src="https://i.loli.net/2020/10/24/qoxsI3ZBjwCpa8y.png" alt="屏幕截图(299)" style="zoom:30%;" />
+<img src="https://i.loli.net/2020/10/24/uEHrApZI9s4Pgk5.png" alt="屏幕截图(297)" style="zoom:30%;" /></li>
+<li>卷积神经网络典型结构：<ul>
+<li>AlexNet：<ul>
+<li>大数据训练、非线性激活函数、防止过拟合和其他原因使其成功</li>
+<li>AlexNet分层解析：<ul>
+<li>第一次卷积：卷积–ReLu–池化</li>
+<li>第二次卷积：卷积–ReLu–池化</li>
+<li>第三次卷积：卷积–ReLu</li>
+<li>第四次卷积：卷积–ReLu</li>
+<li>第五次卷积：卷积–ReLu–池化</li>
+<li>第六次卷积：全连接–ReLu–DropOut</li>
+<li>第七次卷积：全连接–ReLu–DropOut</li>
+<li>第八次卷积：全连接–SoftMax</li>
+</ul>
+</li>
+<li><img src="https://i.loli.net/2020/10/24/LyN2qmikC6IAvR8.png" alt="屏幕截图(302)" style="zoom:45%;" /></li>
+<li>DropOut（随机失活）：训练时随机关闭部分神经元，测试时整合所有神经元（防止过拟合的技术）</li>
+<li>数据增强（平移、翻转、对称；改变RGB通道强度）</li>
+</ul>
+</li>
+<li>ZFNet:（网络结构与AlexNet相同，只是改变了一些部分如感受野……）</li>
+<li>VGG:（更深的网络：8layers -&gt; 16~19layers）</li>
+<li>GoogleNet:（网络层数深22，参数量较少，没有FC层）<ul>
+<li><img src="https://i.loli.net/2020/10/24/u1OcVFrDd6839AR.png" alt="屏幕截图(304)" style="zoom:30%;" /></li>
+<li>Stem部分：卷积-池化-卷积-卷积-池化</li>
+<li>输出：没有额外的全连接层（除了最后的类别输出层）（所以参数量少）</li>
+<li>辅助分类器：解决由于模型深度过深导致的梯度消失的问题</li>
+</ul>
+</li>
+<li>ResNet：（残差学习网络，深度有152层[虽然很深，但没有出现梯度消失问题]）<ul>
+<li><img src="https://i.loli.net/2020/10/24/e6ghM7SlHUmRYt3.png" alt="屏幕截图(306)" style="zoom:30%;" /></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>京东专家结合 pytorch 代码讲解 ResNet（扩展学习）</strong></p>
+<ul>
+<li>CNN =&gt; 函数拟合（复杂函数）。有定理证明，如果层数足够深，CNN可以拟合任何一个函数。</li>
+<li>残差学习的概念：当网络层数越来越深，出现网络退化现象（不是过拟合导致的）=&gt; 难以训练H(x) =&gt; 改训练可以训练的F(x)=H(x)-x【H(x)-x在数学中称为残差Resideal】=&gt; H(x)=F(x)+x，变相方式训练H(x)，此过程叫做残差学习。</li>
+<li><img src="https://i.loli.net/2020/10/24/BU9Gat3DiAV1TbY.png" alt="屏幕截图(308)" style="zoom:40%;" /></li>
+<li>全局平均池化(Global Average Pooling)：作用 ：可以替代全连接层 =&gt; 参数更少 =&gt; 更少地出现过拟合现象 </li>
+<li>RetNet里，五十层以上的block由三层组成，五十层以下的block由两层组成，不同之处在于BottleNeck：<ul>
+<li>使用BottleNeck结构的原因是，如果不降维，在网络深度增加的时候，参数量会非常大。<img src="https://i.loli.net/2020/10/24/wd95WqlpChBNc83.png" alt="屏幕截图(310)" style="zoom:36%;" /></li>
+</ul>
+</li>
+<li>使用 pytorch 实现 ResNet152<ul>
+<li>原理图：<img src="https://i.loli.net/2020/10/24/YZ5uBDEICrmNF6q.png" alt="屏幕截图(313)" style="zoom:30%;" /></li>
+<li>实现代码（根据视频讲解对相应部分进行注释，代码不完全实现）<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch //引入库</span><br><span class="line"><span class="keyword">import</span> torch.nn <span class="keyword">as</span> nn</span><br><span class="line"><span class="keyword">from</span> torch.hub <span class="keyword">import</span> load_state_dict_from url//把网络结构搭起来以后，直接引入 pytorch里面已经训练好的预训练的权重(在函数load_state_dict_from url里加载)</span><br><span class="line">model_urls=&#123;//模型权重值的路径</span><br><span class="line">    ………………</span><br><span class="line">&#125;</span><br><span class="line">/* </span><br><span class="line">关于bias=<span class="literal">False</span>：当卷积层后跟着bn层的时候，卷积层是不需要bias的。</span><br><span class="line">因为在bn层中，它会重新计算重新学习均值和方差，所以是不需要定义偏差的。</span><br><span class="line">这样的话可以节省存储量，即使定义了也没有用，它也会重新算。</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">//封装<span class="number">3</span>×<span class="number">3</span>卷积操作</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">conv3</span>×3(<span class="params">in_planes, out_planes, stride=<span class="number">1</span>, padding=<span class="number">1</span></span>);</span></span><br><span class="line"><span class="function">        <span class="title">return</span> <span class="title">nn</span>.<span class="title">Conv2d</span>(<span class="params">in_planes, out_planes, kernel_size=<span class="number">3</span>, stride=stride, padding=padding, bias=<span class="literal">False</span></span>)//<span class="title">in_planes</span>, <span class="title">out_planes</span>为输入输出通道数的大小 </span></span><br><span class="line"><span class="function">		//封装3×3卷积操作</span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">conv1</span>×1(<span class="params">in_planes, out_planes, stride=<span class="number">1</span></span>);</span></span><br><span class="line"><span class="function">        <span class="title">return</span> <span class="title">nn</span>.<span class="title">Conv2d</span>(<span class="params">in_planes, out_planes, kernel_size=<span class="number">1</span>, stride=stride, bias=<span class="literal">False</span></span>)//<span class="title">in_planes</span>, <span class="title">out_planes</span>为输入输出通道数的大小 </span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"></span></span><br><span class="line"><span class="function"><span class="title">class</span> <span class="title">BasicBlock</span>(<span class="params">nn.Module</span>):</span>//定义类</span><br><span class="line">   expansion = <span class="number">1</span>  // 经过block后channel的变化量</span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, inplanes, planes, stride=<span class="number">1</span>, downsample=<span class="literal">None</span>, norm_layer=<span class="literal">None</span></span>):</span> //定义初始化函数</span><br><span class="line">     <span class="built_in">super</span>(BasicBlock,self).__init__() //调用父类初始化的函数</span><br><span class="line">     <span class="keyword">if</span> norm_layer <span class="keyword">is</span> <span class="literal">None</span>: //如果没有指定BatchNormalization，那么就使用标准的</span><br><span class="line">        norm_layer = nn.BatchNorm2d</span><br><span class="line">     self.conv1 = conv3×<span class="number">3</span>(in_planes, planes, stride)  //定义第一层网络层（<span class="number">3</span>×<span class="number">3</span>卷积），调用前面封装好的函数操作</span><br><span class="line">     self.bn1 = norm_layer(planes) //定义卷积层后接着定义BatchNormalization</span><br><span class="line">     self.relu = nn.ReLu(inplace = <span class="literal">True</span>)//调用激活函数ReLu</span><br><span class="line">     self.conv2 = norm_layer(planes,planes) //定义第二层</span><br><span class="line">     self.bn2 = norm_layer(planes)</span><br><span class="line">     self.downsample = downsample</span><br><span class="line">     self.stride = stride</span><br><span class="line">   </span><br><span class="line">   <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span> //在forward函数里真正去调用我们的层</span><br><span class="line">     identity = x //先把输入存起来</span><br><span class="line">	 //调用定义好的层</span><br><span class="line">	 //调用第一个卷积层</span><br><span class="line">	 out = self.conv1(x)</span><br><span class="line">	 out = self.bn1(out)</span><br><span class="line">	 out = self.relu(out)</span><br><span class="line">	 //调用第二个卷积层</span><br><span class="line">	 out = self.conv2(out)</span><br><span class="line">	 out = self.bn2(out)</span><br><span class="line">	 //进行下采样，因为网络有的地方的尺寸已经发生了变化</span><br><span class="line">	 <span class="keyword">if</span> self.downsample <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">	    identity = self.downsample(x) //此时x也要进行下采样，这样才能保持同步 =&gt; downsample调整x的维度，F(x)+x一致才能相加</span><br><span class="line">		</span><br><span class="line">	 out += identity  //残差学习里面的F(x)+x，这里out为F(x)</span><br><span class="line">	 //等一二层融合后再调用ReLu</span><br><span class="line">	 out = self.relu(out)</span><br><span class="line">	 <span class="keyword">return</span> out //返回结果</span><br><span class="line">	 </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BottleNeck</span>(<span class="params">nn.Module</span>) //定义瓶颈类</span></span><br><span class="line"><span class="class">     <span class="title">expansion</span> = 4//定义变量<span class="title">expansion</span>，统一通道数的变化</span></span><br><span class="line"><span class="class">     <span class="title">def</span> <span class="title">__init__</span>(<span class="params">self, inplanes, planes, stride=<span class="number">1</span>, downsample=<span class="literal">None</span>, norm_layer=<span class="literal">None</span></span>):</span></span><br><span class="line">	     <span class="built_in">super</span>(BottleNeck, self).__init__()</span><br><span class="line">		 <span class="keyword">if</span> norm_layer <span class="keyword">is</span> <span class="literal">None</span></span><br><span class="line">		    norm_layer = nn.BatchNorm2d</span><br><span class="line">		 self.conv1 = conv1×<span class="number">1</span>(inplanes, planes)</span><br><span class="line">		 self.bn1 = norm_layer(planes)</span><br><span class="line">		 self.conv2 = conv3×<span class="number">3</span>(planes, planes, stride)</span><br><span class="line">		 self.bn2 = norm_layer(planes)</span><br><span class="line">		 self.conv3 = conv1×<span class="number">1</span>(planes, planes*self.expansion) // 输入的channel数：planes*self.expansion</span><br><span class="line">		 self.bn3 = norm_layer(planes*self.expansion)</span><br><span class="line">		 self.relu= nn.ReLu(inplace = <span class="literal">True</span>)</span><br><span class="line">		 self.downsample = downsample</span><br><span class="line">		 self.stride = stride</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>):</span></span><br><span class="line">	     identity = x</span><br><span class="line">		  out = self.conv1(x)</span><br><span class="line">		  out = self.bn1(out)</span><br><span class="line">		  out = self.relu(out)</span><br><span class="line">		  </span><br><span class="line">		  out = self.conv2(out)</span><br><span class="line">		  out = self.bn2(out)</span><br><span class="line">		  out = self.relu(out)</span><br><span class="line">		  </span><br><span class="line">		  out = self.conv3(out)</span><br><span class="line">		  out = self.bn3(out)</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">if</span> self.downsample <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span></span><br><span class="line">		     identity = self.downsample(x)</span><br><span class="line">			 </span><br><span class="line">			 </span><br><span class="line">		  out += identity</span><br><span class="line">		  out = self.relu(out)</span><br><span class="line">		  </span><br><span class="line">		  <span class="keyword">return</span> out</span><br><span class="line">		  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ResNet</span>(<span class="params">nn.Module</span>):</span> //开始组装ResNet网络</span><br><span class="line">    </span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, block, layers, num_class=<span class="number">1000</span>, norm_layer=<span class="literal">None</span></span>):</span> // num_class=<span class="number">1000</span>表示在图像识别网络训练的时候，训练集里有<span class="number">1000</span>个类别</span><br><span class="line">	    <span class="built_in">super</span>(ResNet, self.__init__)</span><br><span class="line">		<span class="keyword">if</span> norm_layer <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">		   norm_layer = nn.BatchNorm2d</span><br><span class="line">		   </span><br><span class="line">		self.inplanes = <span class="number">64</span></span><br><span class="line">		</span><br><span class="line">		//最核心部分</span><br><span class="line">		self.conv1 = nn.Conv2d(<span class="number">3</span>, self.inplanes, kernel_size=<span class="number">7</span>, stride=<span class="number">2</span>, padding=<span class="number">3</span>, bias=<span class="literal">False</span>)</span><br><span class="line">		self.bn1 = norm_layer(self.inplanes)</span><br><span class="line">		self.relu = nn.ReLu(inplace=<span class="literal">True</span>)</span><br><span class="line">		self.maxpool = nn.MaxPool2d(kernel_size=<span class="number">3</span>, stride=<span class="number">2</span>, padding=<span class="number">1</span>)</span><br><span class="line">		//这里不同的layer代表不同的stage，这里有四个stage</span><br><span class="line">		self.layer1 = self._make_layer(block, <span class="number">64</span>, layers[<span class="number">0</span>])</span><br><span class="line">		self.layer2 = self._make_layer(block, <span class="number">128</span>, layers[<span class="number">1</span>], stride=<span class="number">2</span>)</span><br><span class="line">		self.layer3 = self._make_layer(block, <span class="number">256</span>, layers[<span class="number">2</span>], stride=<span class="number">2</span>)</span><br><span class="line">		self.layer4 = self._make_layer(block, <span class="number">512</span>, layers[<span class="number">3</span>]. stride=<span class="number">2</span>)</span><br><span class="line">		//四个stage后跟着一个最大平均池化</span><br><span class="line">		self.avgpool = nn.AdaptiveAvgPool2d(<span class="number">1</span>,<span class="number">1</span>)</span><br><span class="line">		//分类层，根据分类的数量来定义分类的结果</span><br><span class="line">		self.fc = nn.Linear(<span class="number">512</span>*block.expansion, num_class)</span><br><span class="line">		</span><br><span class="line">		//参数化的过程</span><br><span class="line">		<span class="keyword">for</span> m <span class="keyword">in</span> self.modules(): //循环所有层</span><br><span class="line">		    <span class="keyword">if</span> <span class="built_in">isinstance</span>(m, nn.Conv2d)  //如果该层为卷积层，就进行kaiming初始化</span><br><span class="line">			   nn.init.kaiming_normal_(m.weight, mode=<span class="string">&#x27;fan_out&#x27;</span>, nonlinearity=<span class="string">&#x27;relu&#x27;</span>)  //kaiming_normal_的应用场景是搭配ReLu激活函数</span><br><span class="line">			<span class="keyword">elif</span> <span class="built_in">isinstance</span>(m, (nn.BatchNorm2d, nn.GroupNorm)):  //如果该层为bn层，就用<span class="number">0</span>和<span class="number">1</span>初始化</span><br><span class="line">			//对于BatchNormalization，常量初始化权重的值为<span class="number">0</span>和<span class="number">1</span></span><br><span class="line">			   nn.init.constant_(m.weight, <span class="number">1</span>)</span><br><span class="line">			   nn.init.constant_(m.bias, <span class="number">0</span>)</span><br><span class="line">			   </span><br><span class="line">	    //非常关键的函数，生成stage里的内容</span><br><span class="line">	    <span class="function"><span class="keyword">def</span> <span class="title">_make_layer</span>(<span class="params">self, block, planes, block, stride=<span class="number">1</span></span>):</span></span><br><span class="line">		    norm_layer = self._norm_layer</span><br><span class="line">			downsample = <span class="literal">None</span></span><br><span class="line">			</span><br><span class="line">			<span class="keyword">if</span> stride!=<span class="number">1</span> <span class="keyword">or</span> self.inplanes!= planes*block.expansion: // 出现这种情况则需要下采样</span><br><span class="line">			   downsample = nn.Sequential(</span><br><span class="line">			   // downsample用<span class="number">1</span>×<span class="number">1</span>卷积来调整维度</span><br><span class="line">			        conv1×<span class="number">1</span>(self.inplanes, planes*block.expansion, stride), // 同时调整spatail(H×W)和channel两个方向</span><br><span class="line">			        norm_layer(planes*block.expansion)</span><br><span class="line">		       )</span><br><span class="line">			   </span><br><span class="line">		 //定义要生成的层</span><br><span class="line">		 layers[]</span><br><span class="line">		 layers.append(block(self.inplanes, planes, stride, downsample, norm_layer)) //第一个block单独处理</span><br><span class="line">		 self.inplanes = planes*self.expansion  // 记录layerN的channel变化，具体看ppt的ResNet表格</span><br><span class="line">		 //循环来生成里面的每一个层</span><br><span class="line">		 <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>, block)：// 从<span class="number">1</span>开始循环，因为第一个模块前面已经单独处理</span><br><span class="line">		     layers.append(block(self.inplanes, planes, stride, norm_layer=norm_layer))</span><br><span class="line">	     <span class="keyword">return</span> nn.Sequential(*layers) // 使用Sequential层组合blocks，形成stage</span><br><span class="line">		 </span><br><span class="line">		 </span><br><span class="line">		 <span class="function"><span class="keyword">def</span> <span class="title">forward</span>(<span class="params">self, x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">conv1</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">bn1</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">relu</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">maxpool</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		  </span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">layer1</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">layer2</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">layer3</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">layer4</span>(<span class="params">x</span>)</span></span><br><span class="line"><span class="function">		 </span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">avgpool</span>(<span class="params">x</span>)  // 全局平均池化</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">torch</span>.<span class="title">flatten</span>(<span class="params">x,<span class="number">1</span></span>) // 展平</span></span><br><span class="line"><span class="function">		 <span class="title">x</span> = <span class="title">self</span>.<span class="title">fc</span>(<span class="params">x</span>) // 全连接层</span></span><br><span class="line"><span class="function">		 </span></span><br><span class="line"><span class="function">		 <span class="title">return</span> <span class="title">x</span></span></span><br><span class="line"><span class="function">		 </span></span><br><span class="line"><span class="function"><span class="title">def</span> <span class="title">_resnet</span>(<span class="params">arch, block, layers, pretrained, progress, **kwargs</span>):</span> // 封装一下，加载预训练的参数</span><br><span class="line">    // 开始调用网络</span><br><span class="line">    model = ResNet(block, layers, **kwargs)  </span><br><span class="line">	<span class="keyword">if</span> pretrained: // 如果需要加载预训练的参数</span><br><span class="line">	   state_dict = load_state_dict_from_url(model_urls[arch], </span><br><span class="line">	                                         progress = progress)</span><br><span class="line">	   model.load_state_dict(state_dict)</span><br><span class="line">	   </span><br><span class="line">	<span class="keyword">return</span> model</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">resnet152</span>(<span class="params">pretrained=<span class="literal">False</span>, progress=<span class="literal">True</span>, **kwargs</span>):</span></span><br><span class="line">    <span class="keyword">return</span> _resnet(<span class="string">&#x27;resnet152&#x27;</span>, BottleNeck, [<span class="number">3</span>,<span class="number">8</span>,<span class="number">36</span>,<span class="number">3</span>], pretrained, progress, **kwargs)</span><br><span class="line"></span><br><span class="line">model = resnet152(pretrained=<span class="literal">True</span>) // pretrained=<span class="literal">True</span>表示使用预训练的参数，加载预训练模型</span><br><span class="line">model.<span class="built_in">eval</span>() // 直接看调用结果</span><br><span class="line">………………此处省略一大段代码……………………</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+        <div class="reward-container">
+  <div></div>
+  <button onclick="var qr = document.getElementById('qr'); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+      
+      <div style="display: inline-block;">
+        <img src="/images/wechat.png" alt="Sober 微信支付">
+        <p>微信支付</p>
+      </div>
+      
+      <div style="display: inline-block;">
+        <img src="/images/alipay.jpg" alt="Sober 支付宝">
+        <p>支付宝</p>
+      </div>
+
+  </div>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" rel="tag"># 深度学习</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/18/12_%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E4%B8%80/" rel="prev" title="深度学习笔记一">
+      <i class="fa fa-chevron-left"></i> 深度学习笔记一
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/01/30/03_PS%E7%BB%99%E5%9B%BE%E7%89%87%E5%9B%9B%E5%91%A8%E5%8A%A0%E4%B8%8A%E5%9C%86%E8%A7%92/" rel="next" title="PS给图片四周加上圆角">
+      PS给图片四周加上圆角 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Sober"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Sober</p>
+  <div class="site-description" itemprop="description">无关迟暮，不问翻覆。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SoberGit" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SoberGit" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/qq_43340547" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;qq_43340547" rel="noopener" target="_blank"><i class="fa fa-crosshairs fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Sober</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+  <script defer src="/lib/three/three.min.js"></script>
+    <script defer src="/lib/three/canvas_lines.min.js"></script>
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
